@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+xml
+Copy code
+<record model="mi_modulo.cliente" id="cliente_1">
+<field name="nombre">Juan Pérez</field>
+<field name="direccion">Calle 123</field>
+<field name="ciudad">Bogotá</field>
+<field name="estado">Cundinamarca</field>
+<field name="codigo_postal">110111</field>
+<field name="pais">Colombia</field>
+</record>
+
+<record model="mi_modulo.factura" id="factura_1">
+    <field name="numero_factura">F001</field>
+    <field name="fecha_emision">2023-03-07</field>
+    <field name="fecha_vencimiento">2023-03-31</field>
+    <field name="monto_total">100000</field>
+    <field name="cliente_id" ref="cliente_1" />
+</record>
+<record model="mi_modulo.producto" id="producto_1">
+    <field name="nombre">Producto 1</field>
+    <field name="descripcion">Descripción del producto 1</field>
+    <field name="precio">50000</field>
+</record>
+
+
+
+    </data>
+</odoo>

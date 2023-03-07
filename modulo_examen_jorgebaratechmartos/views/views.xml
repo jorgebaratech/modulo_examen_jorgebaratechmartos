@@ -1,0 +1,96 @@
+<odoo>
+  <data>
+    
+
+<!-- Vista de árbol para el modelo Cliente -->
+<record id="view_cliente_tree" model="ir.ui.view">
+    <field name="name">cliente.tree</field>
+    <field name="model">mi_modulo.cliente</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="nombre"/>
+            <field name="direccion"/>
+            <field name="ciudad"/>
+            <field name="estado"/>
+            <field name="codigo_postal"/>
+            <field name="pais"/>
+        </tree>
+    </field>
+</record>
+
+<!-- Vista de árbol para el modelo Factura -->
+<record id="view_factura_tree" model="ir.ui.view">
+    <field name="name">factura.tree</field>
+    <field name="model">mi_modulo.factura</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="numero_factura"/>
+            <field name="fecha_emision"/>
+            <field name="fecha_vencimiento"/>
+            <field name="monto_total"/>
+            <field name="cliente_id"/>
+        </tree>
+    </field>
+</record>
+
+
+<!-- Vista de formulario para el modelo Producto -->
+<record id="view_producto_form" model="ir.ui.view">
+    <field name="name">producto.form</field>
+    <field name="model">mi_modulo.producto</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="nombre"/>
+                    <field name="descripcion"/>
+                    <field name="precio"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="menu_modulo_examen" model="ir.ui.menu">
+    <field name="name">Módulo Examen</field>
+    <field name="sequence" type="int">10</field>
+</record>
+
+
+<record id="menu_modulo_examen_submenu1" model="ir.ui.menu">
+    <field name="name">Menu 1</field>
+    <field name="parent_id" ref="menu_modulo_examen"/>
+    <field name="sequence" type="int">10</field>
+    <field name="action" ref="action_cliente_form"/>
+</record>
+
+<record id="menu_modulo_examen_submenu2" model="ir.ui.menu">
+    <field name="name">Menu 2</field>
+    <field name="parent_id" ref="menu_modulo_examen"/>
+    <field name="sequence" type="int">20</field>
+    <field name="action" ref="action_factura_tree"/>
+</record>
+
+
+<record id="action_cliente_form" model="ir.actions.act_window">
+    <field name="name">Clientes</field>
+    <field name="res_model">mi_modulo.cliente</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_cliente_form"/>
+</record>
+
+<record id="action_factura_tree" model="ir.actions.act_window">
+    <field name="name">Facturas</field>
+    <field name="res_model">mi_modulo.factura</field>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_factura_tree"/>
+</record>
+
+
+
+
+
+
+
+  </data>
+</odoo>
